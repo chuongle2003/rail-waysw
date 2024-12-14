@@ -17,17 +17,18 @@ export default function ButtonLogout() {
                 // Gọi API đăng xuất nếu cần
                 await authApiRequest.logout.logout(accessToken);
                 console.log("Logged out successfully.");
+                // Xóa tất cả thông tin liên quan đến đăng nhập
+                localStorage.removeItem("accessToken");
+                localStorage.removeItem("accessTokenExpiry");
+                setAccessToken(null);
+                setProfile(null);
+
+                // Đặt trạng thái không đăng nhập
+                setAdministrator(false);
+                setLoggedIn(false);
             }
 
-            // Xóa tất cả thông tin liên quan đến đăng nhập
-            localStorage.removeItem("accessToken");
-            localStorage.removeItem("accessTokenExpiry");
-            setAccessToken(null);
-            setProfile(null);
 
-            // Đặt trạng thái không đăng nhập
-            setAdministrator(false);
-            setLoggedIn(false);
 
             // Chuyển hướng về trang đăng nhập
             router.push("/auth");
@@ -37,7 +38,7 @@ export default function ButtonLogout() {
             // Đảm bảo làm mới trạng thái và xóa token client
             setLoggedIn(false);
             clientAccessToken.value = "";
-            router.refresh();
+            router.push("/auth");
         }
     };
 

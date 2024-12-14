@@ -72,30 +72,33 @@ const UserManagement = () => {
       roleName: user.roleName.join(", "),
     }))
   );
+  const displayFields = [
+    "id",
+    "email",
+    "firstName",
+    "lastName",
+    "phone",
+    "roleName",
+  ];
+  const addFields = [
+    { name: "id", label: "ID", type: "text" },
+
+  ];
+
 
   return (
-    // src/components/admin/UserManagement.tsx
     <TabContent
-      title="Quản lý Người Dùng"
-      fields={["id", "Tên", "Email", "Số điện thoại", "Vai trò"]}
+      title="Quản lý Tàu"
+      displayFields={displayFields}
+      addFields={addFields}
       data={users.map((user) => ({
-        id: user.id,
-        email: user.email,
-        password: "",
-        oldPassword: "",
+        ID: user.id,
+        Email: user.email,
         firstName: user.firstName,
         lastName: user.lastName,
         phone: user.phone,
         roleName: user.roleName.join(", "),
       }))}
-      onAdd={handleAddUser}
-      onDelete={(id) =>
-        handleDeleteUser({
-          username: `user${id}`,
-          password: "placeholder",
-          deleeteUserId: id,
-        })
-      }
       loading={loading}
     />
   );

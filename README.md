@@ -1,36 +1,77 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Dự án Xây dựng Website Đặt vé xe lửa – SGU Train System
 
-## Getting Started
+## Giới thiệu
 
-First, run the development server:
+Dự án này sử dụng công nghệ Next.js, được khởi tạo với lệnh `create-next-app`. Phần frontend được thiết kế để cung cấp trải nghiệm tốt nhất cho người dùng khi sử dụng hệ thống đặt vé tàu.
+
+## Hướng dẫn khởi chạy
+
+### 1. Chạy ứng dụng
+
+Sử dụng một trong các lệnh sau để khởi chạy ứng dụng ở chế độ phát triển:
 
 ```bash
 npm run dev
-# or
+# hoặc
 yarn dev
-# or
+# hoặc
 pnpm dev
-# or
+# hoặc
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Sau khi khởi động thành công, mở trình duyệt và truy cập [http://localhost:3000](http://localhost:3000) để xem kết quả.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 2. Chỉnh sửa trang
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Để bắt đầu chỉnh sửa, hãy thay đổi nội dung trong file `app/page.tsx`. Ứng dụng sẽ tự động cập nhật khi có thay đổi.
 
-## Learn More
+### 3. Tối ưu hóa phông chữ
 
-To learn more about Next.js, take a look at the following resources:
+Dự án sử dụng `next/font` để tối ưu hóa và tải phông chữ tự động.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Cấu trúc dự án Frontend
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Các thành phần chính
 
-## Deploy on Vercel
+#### Group client route:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Bao gồm các trang chạy phía client để điều hướng các route hợp lý.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+#### Tìm kiếm, đặt vé, thanh toán:
+
+Tích hợp giao diện và API xử lý việc tìm kiếm lịch trình, đặt vé, và thanh toán.
+
+#### Quản lý tài khoản:
+
+Giao diện và API dành cho chức năng đăng nhập, đăng ký, quên mật khẩu.
+
+#### Components:
+
+Các thành phần giao diện tái sử dụng được xây dựng để phục vụ toàn bộ ứng dụng.
+
+#### Custom hooks và context:
+
+Xử lý các logic đặc thù như call API, quản lý trạng thái, và giao tiếp qua web-socket.
+
+#### Thư viện tích hợp (shadcn library):
+
+Cung cấp các components giao diện UI hiện đại và đẹp mắt.
+
+#### Config và packages:
+
+Cấu hình và thư viện cần thiết để triển khai ứng dụng.
+
+## Tính năng nổi bật
+
+- Tìm kiếm lịch trình và đặt vé tàu một chiều hoặc khứ hồi.
+- Thanh toán qua ví điện tử MOMO, Paypal.
+- Chatbot hỗ trợ giải đáp thắc mắc của người dùng.
+- Tích hợp quét mã QR để xác thực vé.
+- Hỗ trợ đa ngôn ngữ và các giao diện thân thiện với người dùng.
+
+## Tài liệu tham khảo
+
+- [Next.js Documentation](https://nextjs.org/docs) - Tài liệu chính thức của Next.js.
+- [Learn Next.js](https://nextjs.org/learn) - Hướng dẫn sử dụng Next.js tương tác.
+- [MOMO Payment Docs](https://developers.momo.vn) - Hướng dẫn tích hợp thanh toán MOMO.

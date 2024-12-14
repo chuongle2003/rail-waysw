@@ -39,6 +39,8 @@ import {
   endOfYear,
 } from "date-fns";
 import statisticApiRequest from "@/app/apiRequests/statistic";
+import Link from "next/link";
+import { Button } from "@/app/components/Button";
 
 ChartJS.register(
   CategoryScale,
@@ -170,13 +172,12 @@ export default function StatisticsPage() {
     plugins: {
       title: {
         display: true,
-        text: `Thống kê ${
-          timeRange === "hourly"
-            ? "theo giờ"
-            : timeRange === "daily"
+        text: `Thống kê ${timeRange === "hourly"
+          ? "theo giờ"
+          : timeRange === "daily"
             ? "theo ngày"
             : "theo tháng"
-        }`,
+          }`,
       },
     },
     scales: {
@@ -240,8 +241,10 @@ export default function StatisticsPage() {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Thống kê Doanh thu và Vé đặt</h1>
-      <Card>
+      <div className="mb-2">
+        <h1 className="text-2xl font-bold mb-4">Thống kê Doanh thu và Vé đặt</h1>
+        <Link href="/admin"><Button>Back</Button></Link>
+      </div>      <Card>
         <CardHeader>
           <CardTitle>Biểu đồ Thống kê</CardTitle>
           <CardDescription>
@@ -263,13 +266,12 @@ export default function StatisticsPage() {
               <Select value={selectedDate} onValueChange={setSelectedDate}>
                 <SelectTrigger className="w-[180px]">
                   <SelectValue
-                    placeholder={`Chọn ${
-                      timeRange === "hourly"
-                        ? "ngày"
-                        : timeRange === "daily"
+                    placeholder={`Chọn ${timeRange === "hourly"
+                      ? "ngày"
+                      : timeRange === "daily"
                         ? "tháng"
                         : "năm"
-                    }`}
+                      }`}
                   />
                 </SelectTrigger>
                 <SelectContent>{generateDateOptions()}</SelectContent>

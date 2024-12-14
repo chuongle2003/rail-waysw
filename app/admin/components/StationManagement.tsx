@@ -3,9 +3,8 @@ import React, { useEffect, useState } from "react";
 import TabContent from "./TabContent";
 import adminApiRequests from "@/app/apiRequests/admin";
 import { createStationBodyType, Station } from "@/app/interfaces";
-
 const StationManagement = () => {
-  const [stations, setStations] = useState<Station[]>();
+  const [stations, setStations] = useState<any>();
   const [loading, setLoading] = useState(false);
 
   // Fetch all stations from API
@@ -36,23 +35,26 @@ const StationManagement = () => {
     fetchStations();
   }, []);
 
+  const displayFields = [
+    "id",
+    "name",
+    "address",
+  ];
+  const addFields = [
+    { name: "name", label: "Tên ga", type: "text" },
+    { name: "adrress", label: "Địa chỉ", type: "text" },
+  ];
+
   return (
-    // src/components/admin/StationManagement.tsx
-    // src/components/admin/StationManagement.tsx
     <TabContent
       title="Quản lý Ga"
-      fields={["name", "address"]}
-      data={
-        stations?.map((station) => ({
-          name: station.name,
-          address: {
-            street: station.address.split(",")[0] || "N/A",
-            city: station.address.split(",")[1] || "N/A",
-            state: station.address.split(",")[2] || "N/A",
-          },
-        })) || []
-      }
-      onAdd={handleAddStation}
+      displayFields={displayFields}
+      addFields={addFields}
+      data={stations?.map((station: any) => ({
+        id: station.id,
+        name: station.name,
+        address: station.address
+      }))}
       loading={loading}
     />
   );

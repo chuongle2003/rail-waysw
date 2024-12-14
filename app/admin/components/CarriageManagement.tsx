@@ -6,6 +6,7 @@ const CarriageManagement = () => {
     const [carriages, setCarriages] = useState<Railcar[]>([]); // Sử dụng interface Railcar
     const [loading, setLoading] = useState(false);
     interface Railcar {
+        id: string;
         name: string;
         railcarType: string;
         capacity: number;
@@ -28,7 +29,7 @@ const CarriageManagement = () => {
     };
 
     // Add a new carriage
-    const handleAddCarriage = async (newCarriage: Railcar) => {
+    const handleAddCarriage = async (newCarriage: any) => {
         const accessToken = localStorage.getItem("accessToken") || "";
         try {
             await adminApiRequests.railCar.create(newCarriage, accessToken);
@@ -42,21 +43,39 @@ const CarriageManagement = () => {
         fetchCarriages();
     }, []);
 
+    const displayFields = [
+        "id",
+        "name",
+        "railcarType",
+        "capacity",
+        "seatPerRow",
+        "isHaveFloor",
+    ];
+    const addFields = [
+        { name: "name", label: "Tên toa", type: "text" },
+        { name: "railcarType", label: "loại toa", type: "text" },
+        { name: "capacity", label: "số lượng ghế", type: "text" },
+        { name: "seatPerRow", label: "số ghế mỗi hàng", type: "text" },
+        { name: "isHaveFloor", label: "Có sàn hay không", type: "boolean" },
+    ];
+
     return (
         <TabContent
             title="Quản lý Toa"
-            fields={["name", "railcarType", "capacity", "seatPerRow"]}
+            displayFields={displayFields}
+            addFields={addFields}
             data={carriages.map((carriage) => ({
+                id: carriage.id,
                 name: carriage.name,
                 railcarType: carriage.railcarType,
                 capacity: carriage.capacity,
                 seatPerRow: carriage.seatPerRow,
-                isHaveFloor: carriage.isHaveFloor,
+                isHaveFloor: carriage.isHaveFloor.toString(),
             }))}
             onAdd={handleAddCarriage}
             loading={loading}
         />
     );
-};
+}
 
 export default CarriageManagement;

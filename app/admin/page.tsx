@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import TrainManagement from "./components/TrainManagement";
 import CarriageManagement from "./components/CarriageManagement";
 import StationManagement from "./components/StationManagement";
-import TicketManagement from "./components/TicketManagement";
 import UserManagement from "./components/UserManagement";
 import Link from "next/link";
 
@@ -20,9 +19,9 @@ const AdminDashboard = () => {
         return <CarriageManagement />;
       case "stations":
         return <StationManagement />;
-      case "tickets":
-        return <TicketManagement />;
       case "users":
+        return <UserManagement />;
+      case "statistic":
         return <UserManagement />;
       default:
         return <div>Chọn một tab để quản lý</div>;
@@ -51,23 +50,17 @@ const AdminDashboard = () => {
           Quản lý Ga
         </button>
         <button
-          className={`px-4 py-2 ${activeTab === "tickets" ? "bg-blue-500 text-white" : "bg-gray-200"}`}
-          onClick={() => setActiveTab("tickets")}
-        >
-          Quản lý Vé
-        </button>
-        <button
           className={`px-4 py-2 ${activeTab === "users" ? "bg-blue-500 text-white" : "bg-gray-200"}`}
           onClick={() => setActiveTab("users")}
         >
           Quản lý Người Dùng
         </button>
         <button
-          className={`px-4 py-2 ${activeTab === "users" ? "bg-blue-500 text-white" : "bg-gray-200"}`}
+          className={`px-4 py-2 ${activeTab === "statistic" ? "bg-blue-500 text-white" : "bg-gray-200"}`}
         >
-        <Link className="w-full" href={"admin/statistic"}>
-          Thống kê
-        </Link>
+          <Link className="w-full" href={"admin/statistic"}>
+            Thống kê
+          </Link>
         </button>
       </nav>
       <main className="mt-6">{renderTabContent()}</main>

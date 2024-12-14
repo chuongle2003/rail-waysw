@@ -28,8 +28,7 @@ const adminApiRequests = {
         },
       }),
     create: (body: createTrainBodyType, accessToken: string | undefined) =>
-      http.post<createTrainResponse>("/api/v1/train/create", {
-        body,
+      http.post<createTrainResponse>("/api/v1/train/create", body, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
@@ -43,8 +42,7 @@ const adminApiRequests = {
         },
       }),
     create: (body: createRailCarBodyType, accessToken: string | undefined) =>
-      http.post<createRailCarResponse>("/api/v1/railcar/create", {
-        body,
+      http.post<createRailCarResponse>("/api/v1/railcar/create", body, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },

@@ -288,6 +288,7 @@ export interface GetAllRailCarResponse {
   message: string[];
   status: number;
   result: {
+    id: string;
     name: string;
     railcarType: string;
     capacity: number;

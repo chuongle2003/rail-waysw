@@ -66,13 +66,13 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
     setProfile(null);
     deactivateWebSocket();
     localStorage.clear();
+    window.location.href = "/auth?block-userspam";
     toast({
       title: "SPAM",
       description: "Tài khoản của bạn bị khóa do spam quá nhiều lần",
       duration: 5000,
       variant: "destructive",
     });
-    window.location.href = "/auth?block-userspam";
   };
 
   useEffect(() => {

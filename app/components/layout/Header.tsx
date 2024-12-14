@@ -33,11 +33,6 @@ export function Header() {
                   Tìm kiếm
                 </Link>
               </li>
-              <li>
-                <Link href="/Booking" className="text-gray-600 hover:text-gray-900">
-                  Đặt vé
-                </Link>
-              </li>
               {isLoggedIn && profile ? (
                 <>
                   <li>
